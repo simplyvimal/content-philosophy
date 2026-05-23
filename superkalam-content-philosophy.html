@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Content Philosophy — SuperKalam Learn</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1410;
+    --ink-soft: #3d3530;
+    --ink-muted: #7a6f68;
+    --paper: #faf8f4;
+    --paper-warm: #f2ede4;
+    --paper-mid: #e8e0d2;
+    --accent: #c84b2f;
+    --accent-warm: #e86b3a;
+    --accent-light: #fde8e0;
+    --teal: #2a7a6e;
+    --teal-light: #e0f2ef;
+    --gold: #b8860b;
+    --gold-light: #fef8e6;
+    --blue: #1e4f7a;
+    --blue-light: #e6f0f8;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.7;
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 72px 24px 64px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -60px; right: -60px;
+    width: 300px; height: 300px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,75,47,0.18) 0%, transparent 70%);
+  }
+  .hero-inner { max-width: 760px; margin: 0 auto; position: relative; z-index: 1; }
+  .hero-label {
+    font-size: 11px; font-weight: 600; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--accent-warm); margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(36px, 6vw, 64px);
+    font-weight: 300; line-height: 1.1; letter-spacing: -1px; margin-bottom: 20px;
+  }
+  .hero h1 em { font-style: italic; color: var(--accent-warm); }
+  .hero-desc {
+    font-size: 16px; font-weight: 300;
+    color: rgba(250,248,244,0.7); max-width: 500px; line-height: 1.75;
+  }
+
+  /* NAV */
+  .nav-strip {
+    background: var(--paper-warm);
+    border-bottom: 1px solid var(--paper-mid);
+    padding: 0 24px;
+    display: flex; gap: 0; overflow-x: auto; scrollbar-width: none;
+    width: 100%;
+  }
+  .nav-strip::-webkit-scrollbar { display: none; }
+  .nav-strip a {
+    font-size: 12px; font-weight: 500; letter-spacing: 0.5px;
+    color: var(--ink-muted); text-decoration: none;
+    padding: 14px 16px; white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s; flex-shrink: 0;
+  }
+  .nav-strip a:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* PAGE */
+  .page { max-width: 760px; margin: 0 auto; padding: 0 24px 100px; width: 100%; }
+
+  /* SECTION */
+  .section { padding: 64px 0 0; }
+  .section-number {
+    font-size: 11px; font-weight: 600; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 8px;
+  }
+  .section h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(24px, 4vw, 34px);
+    font-weight: 400; letter-spacing: -0.5px; line-height: 1.2; margin-bottom: 14px;
+  }
+  .section h2 em { font-style: italic; color: var(--ink-soft); }
+  .section-intro { font-size: 15px; color: var(--ink-soft); margin-bottom: 32px; max-width: 580px; }
+  .divider { width: 44px; height: 2px; background: var(--accent); margin: 16px 0 28px; }
+
+  /* EXAMPLE CARD */
+  .example-card {
+    border: 1px solid var(--paper-mid); border-radius: 12px;
+    overflow: hidden; margin-top: 24px; background: #fff; width: 100%;
+  }
+  .example-card-header {
+    background: var(--paper-warm); padding: 11px 20px;
+    font-size: 11px; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--ink-muted);
+    border-bottom: 1px solid var(--paper-mid);
+  }
+  .example-body { padding: 24px; }
+
+  /* COMPARE — stacked */
+  .compare-stack { display: flex; flex-direction: column; gap: 14px; margin-top: 24px; width: 100%; }
+  .compare-cell {
+    border-radius: 10px; padding: 20px; width: 100%;
+  }
+  .compare-cell.bad { background: #fff5f3; border: 1px solid #f5cfc7; }
+  .compare-cell.good { background: var(--teal-light); border: 1px solid #b0ddd7; }
+  .compare-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; margin-bottom: 10px;
+  }
+  .compare-cell.bad .compare-label { color: var(--accent); }
+  .compare-cell.good .compare-label { color: var(--teal); }
+  .compare-cell p { font-size: 14px; line-height: 1.75; color: var(--ink-soft); }
+
+  /* HIERARCHY TABLE — scrollable wrapper */
+  .table-wrap { width: 100%; overflow-x: auto; margin-top: 24px; border-radius: 10px; border: 1px solid var(--paper-mid); }
+  .hier-table { width: 100%; min-width: 520px; border-collapse: collapse; font-size: 13px; }
+  .hier-table th {
+    background: var(--ink); color: var(--paper);
+    text-align: left; padding: 11px 14px;
+    font-weight: 500; font-size: 12px; letter-spacing: 0.5px;
+  }
+  .hier-table td { padding: 13px 14px; border-bottom: 1px solid var(--paper-mid); vertical-align: top; }
+  .hier-table tr:last-child td { border-bottom: none; }
+  .hier-table tr:nth-child(even) td { background: var(--paper-warm); }
+  .layer-tag {
+    display: inline-block; padding: 3px 9px; border-radius: 20px;
+    font-size: 11px; font-weight: 600; white-space: nowrap;
+  }
+  .layer-core { background: var(--accent-light); color: var(--accent); }
+  .layer-support { background: var(--gold-light); color: var(--gold); }
+  .layer-extra { background: var(--blue-light); color: var(--blue); }
+
+  /* DIAGRAM — vertical on small, horizontal scroll wrapper */
+  .diagram-box {
+    background: var(--paper-warm); border: 1px solid var(--paper-mid);
+    border-radius: 12px; padding: 28px 20px; margin-top: 24px; width: 100%;
+  }
+  .diagram-title {
+    font-size: 11px; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--ink-muted); margin-bottom: 24px;
+    text-align: center;
+  }
+  .flow-scroll { overflow-x: auto; width: 100%; padding-bottom: 4px; }
+  .flow-row {
+    display: flex; align-items: center; justify-content: flex-start;
+    gap: 0; min-width: 580px;
+  }
+  .flow-node {
+    background: #fff; border: 1.5px solid var(--paper-mid); border-radius: 8px;
+    padding: 12px 14px; font-size: 13px; font-weight: 500; color: var(--ink);
+    min-width: 110px; text-align: center; flex-shrink: 0;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  }
+  .flow-node span { display: block; font-size: 11px; font-weight: 400; color: var(--ink-muted); margin-top: 3px; }
+  .flow-arrow { color: var(--accent); font-size: 18px; padding: 0 6px; flex-shrink: 0; }
+  .diagram-caption { font-size: 12px; color: var(--ink-muted); margin-top: 16px; font-style: italic; text-align: center; }
+
+  /* CALLOUT */
+  .callout {
+    border-left: 3px solid var(--accent); background: var(--accent-light);
+    border-radius: 0 8px 8px 0; padding: 14px 18px;
+    margin-top: 16px; font-size: 14px; color: var(--ink-soft); width: 100%;
+  }
+  .callout-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 5px; }
+  .callout-teal { border-left-color: var(--teal); background: var(--teal-light); }
+  .callout-teal .callout-label { color: var(--teal); }
+  .callout-gold { border-left-color: var(--gold); background: var(--gold-light); }
+  .callout-gold .callout-label { color: var(--gold); }
+
+  /* DIALOGUE */
+  .dialogue {
+    background: #fff; border: 1px solid var(--paper-mid);
+    border-radius: 12px; overflow: hidden; margin-top: 24px; width: 100%;
+  }
+  .dialogue-header {
+    background: var(--ink); color: var(--paper); padding: 10px 20px;
+    font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+  }
+  .dialogue-body { padding: 20px; display: flex; flex-direction: column; gap: 14px; }
+  .dialogue-line { display: flex; gap: 12px; align-items: flex-start; }
+  .dialogue-avatar {
+    width: 30px; height: 30px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; flex-shrink: 0; margin-top: 2px;
+  }
+  .avatar-q { background: var(--paper-warm); border: 1.5px solid var(--paper-mid); }
+  .avatar-a { background: var(--teal-light); border: 1.5px solid #b0ddd7; }
+  .dialogue-text { font-size: 14px; line-height: 1.7; color: var(--ink-soft); }
+  .dialogue-text strong { color: var(--ink); }
+
+  /* FORMAT DEMO */
+  .format-demo {
+    background: #fff; border: 1px solid var(--paper-mid);
+    border-radius: 12px; padding: 24px; margin-top: 24px;
+    font-size: 15px; line-height: 1.75; width: 100%;
+  }
+  .format-demo h3 {
+    font-family: 'Fraunces', serif; font-size: 19px;
+    font-weight: 400; margin-bottom: 12px;
+  }
+  .format-demo p { margin-bottom: 12px; color: var(--ink-soft); }
+  .format-demo strong { color: var(--ink); }
+  .format-demo ul { margin: 12px 0 12px 20px; color: var(--ink-soft); }
+  .format-demo ul li { margin-bottom: 5px; }
+  .format-annotation {
+    background: var(--gold-light); border: 1px dashed var(--gold);
+    border-radius: 6px; padding: 7px 13px;
+    font-size: 12px; color: var(--gold); font-weight: 500;
+    margin: 4px 0 12px; display: flex; align-items: center; gap: 6px;
+  }
+  .format-annotation::before { content: '↑'; font-size: 14px; }
+
+  /* PAGE STRUCTURE */
+  .page-structure {
+    display: flex; flex-direction: column; gap: 0;
+    margin-top: 24px; border: 1px solid var(--paper-mid);
+    border-radius: 12px; overflow: hidden; width: 100%;
+  }
+  .ps-row { display: flex; align-items: stretch; border-bottom: 1px solid var(--paper-mid); }
+  .ps-row:last-child { border-bottom: none; }
+  .ps-num {
+    width: 44px; min-height: 56px;
+    background: var(--ink); color: var(--paper);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Fraunces', serif; font-size: 18px; font-weight: 300; flex-shrink: 0;
+  }
+  .ps-content { padding: 14px 18px; flex: 1; background: #fff; min-width: 0; }
+  .ps-content:hover { background: var(--paper-warm); }
+  .ps-label { font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 3px; }
+  .ps-desc { font-size: 13px; color: var(--ink-muted); }
+
+  /* PRINCIPLES GRID */
+  .principles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 14px; margin-top: 28px; width: 100%;
+  }
+  .principle-card {
+    background: #fff; border: 1px solid var(--paper-mid);
+    border-radius: 12px; padding: 20px; position: relative; overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .principle-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.07); }
+  .principle-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  }
+  .pc-red::before { background: var(--accent); }
+  .pc-teal::before { background: var(--teal); }
+  .pc-gold::before { background: var(--gold); }
+  .pc-blue::before { background: var(--blue); }
+  .principle-icon { font-size: 22px; margin-bottom: 10px; }
+  .principle-card h4 { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 400; margin-bottom: 6px; }
+  .principle-card p { font-size: 13px; color: var(--ink-muted); line-height: 1.6; }
+
+  /* STANDARD */
+  .standard-block {
+    background: var(--ink); color: var(--paper);
+    border-radius: 14px; padding: 36px 28px; margin-top: 64px; width: 100%;
+  }
+  .standard-block h2 {
+    font-family: 'Fraunces', serif; font-size: 26px;
+    font-weight: 300; margin-bottom: 20px;
+  }
+  .standard-item {
+    display: flex; gap: 14px; padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .standard-item:last-child { border-bottom: none; }
+  .standard-q { font-size: 13px; color: rgba(250,248,244,0.45); flex-shrink: 0; width: 16px; margin-top: 1px; }
+  .standard-text { font-size: 15px; color: rgba(250,248,244,0.85); line-height: 1.6; }
+
+  /* REVEAL */
+  
+  
+
+  /* FOOTER */
+  .footer {
+    background: var(--paper-warm); border-top: 1px solid var(--paper-mid);
+    text-align: center; padding: 28px 24px;
+    font-size: 13px; color: var(--ink-muted);
+  }
+  .footer strong { color: var(--ink); }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-label">SuperKalam Learn</div>
+    <h1>We write to build<br><em>understanding,</em><br>not cover topics.</h1>
+    <p class="hero-desc">A philosophy for every word, diagram, callout, and bold choice on the SuperKalam platform. Read this before you write a single sentence.</p>
+  </div>
+</div>
+
+<div class="nav-strip">
+  <a href="#who">Who We Write For</a>
+  <a href="#clarity">Clarity First</a>
+  <a href="#hierarchy">Hierarchy</a>
+  <a href="#visuals">Visuals</a>
+  <a href="#formatting">Formatting</a>
+  <a href="#dialogue">Dialogue Box</a>
+  <a href="#structure">Page Structure</a>
+  <a href="#standard">The Standard</a>
+</div>
+
+<div class="page">
+
+  <!-- WHO -->
+  <div class="section" id="who">
+    <div class="section-number">Context</div>
+    <h2>Who we're <em>writing for</em></h2>
+    <div class="divider"></div>
+    <p class="section-intro">Every formatting decision starts here. If you've lost the reader in mind, you've lost everything.</p>
+    <div class="example-card">
+      <div class="example-card-header">📍 Our Aspirant</div>
+      <div class="example-body" style="font-size:15px;line-height:1.8;color:var(--ink-soft);">
+        <p>Picture a 24-year-old in Lucknow. It's 10 PM. He's a commerce graduate preparing for UPSC on his own — trying to understand <strong style="color:var(--ink)">federalism</strong> before his weekly test. He has Laxmikanth open on one side and SuperKalam on the other.</p>
+        <p style="margin-top:12px;">He doesn't need hand-holding. He needs <strong style="color:var(--ink)">clarity, speed, and depth</strong> in the right proportion — enough to write a 250-word Mains answer or pick the right Prelims option.</p>
+        <div class="callout" style="margin-top:18px;">
+          <div class="callout-label">Remember</div>
+          Everything we build is for him, in that moment. Under pressure. Without a guide. On a phone screen.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CLARITY -->
+  <div class="section" id="clarity">
+    <div class="section-number">Principle 01</div>
+    <h2>Clarity <em>before completeness</em></h2>
+    <div class="divider"></div>
+    <p class="section-intro">A page that contains everything but teaches nothing has failed. We write so an aspirant can answer a question after one read.</p>
+    <div class="compare-stack">
+      <div class="compare-cell bad">
+        <div class="compare-label">❌ Don't write this</div>
+        <p>The doctrine of basic structure, enunciated in Kesavananda Bharati, operates as a judicially implied limitation on the constituent power of Parliament, precluding amendments that abrogate or abridge the essential features of the constitutional framework.</p>
+      </div>
+      <div class="compare-cell good">
+        <div class="compare-label">✓ Write this instead</div>
+        <p>The Basic Structure Doctrine says Parliament cannot amend the Constitution in a way that destroys its core identity. This was established in the <strong>Kesavananda Bharati case (1973)</strong>. Courts — not Parliament — decide what counts as "core."</p>
+      </div>
+    </div>
+    <div class="callout" style="margin-top:18px;">
+      <div class="callout-label">Rule</div>
+      One idea per paragraph. Simple sentences. No jargon without context. Every constitutional term must be placed in context before it is used analytically.
+    </div>
+  </div>
+
+  <!-- HIERARCHY -->
+  <div class="section" id="hierarchy">
+    <div class="section-number">Principle 02</div>
+    <h2>Information hierarchy <em>is everything</em></h2>
+    <div class="divider"></div>
+    <p class="section-intro">Not all information is equal. Formatting must reflect that. If an aspirant reads only the bold text and callout boxes, they should be able to attempt any standard Prelims question on that topic.</p>
+    <div class="table-wrap">
+      <table class="hier-table">
+        <thead>
+          <tr>
+            <th>Layer</th>
+            <th>What it is</th>
+            <th>How we show it</th>
+            <th>UPSC Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="layer-tag layer-core">Core</span></td>
+            <td>The one thing the aspirant must retain</td>
+            <td><strong>Bold text</strong> or highlight box</td>
+            <td><strong>Article 356</strong> enables President's Rule</td>
+          </tr>
+          <tr>
+            <td><span class="layer-tag layer-support">Supporting</span></td>
+            <td>Context that makes the core idea meaningful</td>
+            <td>Regular body text</td>
+            <td>Triggered when a state govt loses majority or constitutional breakdown occurs</td>
+          </tr>
+          <tr>
+            <td><span class="layer-tag layer-extra">Supplementary</span></td>
+            <td>Useful for depth; not exam-critical</td>
+            <td>Callout box or aside</td>
+            <td>SR Bommai case (1994) placed judicial checks on misuse of Article 356</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- VISUALS -->
+  <div class="section" id="visuals">
+    <div class="section-number">Principle 03</div>
+    <h2>Visual thinking <em>is not optional</em></h2>
+    <div class="divider"></div>
+    <p class="section-intro">For Polity, History, and Economy — where relationships, sequences, and comparisons matter — a good diagram does more work than three paragraphs.</p>
+
+    <div class="diagram-box">
+      <div class="diagram-title">Example Diagram — How a Bill Becomes Law in India</div>
+      <div class="flow-scroll">
+        <div class="flow-row">
+          <div class="flow-node">Bill Introduced<span>Lok Sabha / Rajya Sabha</span></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node">Committee Review<span>Standing / Select</span></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node">Debate & Vote<span>Simple Majority</span></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node">Other House<span>Same process</span></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node" style="border-color:var(--teal);background:var(--teal-light);">Presidential Assent<span>Becomes Law</span></div>
+        </div>
+      </div>
+      <div class="diagram-caption">Every diagram must have a caption. Labels must be readable at mobile size. Clean enough to sketch from memory.</div>
+    </div>
+
+    <div style="margin-top:20px;display:flex;flex-direction:column;gap:10px;">
+      <div class="callout callout-teal">
+        <div class="callout-label">Use a Diagram when…</div>
+        Any process with stages (monsoon, constitutional amendment) or systems with interconnected parts (federal structure, monetary policy).
+      </div>
+      <div class="callout callout-gold">
+        <div class="callout-label">Use a Table when…</div>
+        Comparing two or more things across the same parameters — FR vs DPSP, types of courts, Emergency provisions.
+      </div>
+      <div class="callout">
+        <div class="callout-label">Use a Map or Image when…</div>
+        Geography-linked content where spatial context matters, or historical events where location grounds the concept.
+      </div>
+    </div>
+  </div>
+
+  <!-- FORMATTING -->
+  <div class="section" id="formatting">
+    <div class="section-number">Principle 04</div>
+    <h2>Bold, italic, highlight — <em>use with intent</em></h2>
+    <div class="divider"></div>
+    <p class="section-intro">Formatting loses its power when overused. If everything is bold, nothing is bold.</p>
+
+    <div class="format-demo">
+      <h3>Emergency Provisions in the Indian Constitution</h3>
+      <div class="format-annotation">Heading: clear topic anchor. Not decorative.</div>
+
+      <p>The Constitution provides for three types of emergencies. <strong>National Emergency under Article 352</strong> is the most serious — it can be declared on grounds of war, external aggression, or armed rebellion.</p>
+      <div class="format-annotation">Bold used once per paragraph. For the single most critical term.</div>
+
+      <p>During a National Emergency, <em>Fundamental Rights under Article 19</em> stand suspended automatically. Rights under Articles 20 and 21, however, cannot be suspended under any circumstances.</p>
+      <div class="format-annotation">Italic for a term being referenced precisely. Not for dramatic emphasis.</div>
+
+      <ul>
+        <li>Article 352 — National Emergency</li>
+        <li>Article 356 — State Emergency (President's Rule)</li>
+        <li>Article 360 — Financial Emergency</li>
+      </ul>
+      <div class="format-annotation">Bulleted lists for enumerable items — not for all content.</div>
+
+      <div class="callout" style="margin-top:4px;">
+        <div class="callout-label">⚠ Exam Trap</div>
+        Article 19 suspension is automatic during National Emergency. But rights under Articles 20 & 21 cannot be suspended even then. This is a frequent Prelims trap.
+      </div>
+      <div class="format-annotation">Callout used once per section. For exam-critical nuance only.</div>
+    </div>
+  </div>
+
+  <!-- DIALOGUE -->
+  <div class="section" id="dialogue">
+    <div class="section-number">Principle 05</div>
+    <h2>The dialogue box — <em>surface the question first</em></h2>
+    <div class="divider"></div>
+    <p class="section-intro">Voice the confusion an aspirant is likely to have at a specific point — then resolve it immediately. Works best for Polity, Ethics, and Economy.</p>
+
+    <div class="dialogue">
+      <div class="dialogue-header">Example — President's Discretionary Powers</div>
+      <div class="dialogue-body">
+        <div class="dialogue-line">
+          <div class="dialogue-avatar avatar-q">🎓</div>
+          <div class="dialogue-text"><strong>Aspirant:</strong> If the President is a constitutional head with no real power, why does the Constitution give him discretionary powers at all?</div>
+        </div>
+        <div class="dialogue-line">
+          <div class="dialogue-avatar avatar-a">📘</div>
+          <div class="dialogue-text"><strong>Explainer:</strong> Good catch. The President's discretion is designed for rare moments when constitutional machinery breaks down — when there's no clear majority, or when a PM loses confidence of the House. In normal times, he acts on Cabinet advice. But those edge cases are exactly where UPSC sets its hardest questions.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dialogue" style="margin-top:14px;">
+      <div class="dialogue-header">Example — DPSP vs Fundamental Rights</div>
+      <div class="dialogue-body">
+        <div class="dialogue-line">
+          <div class="dialogue-avatar avatar-q">🎓</div>
+          <div class="dialogue-text"><strong>Aspirant:</strong> DPSPs are non-justiciable. So are they even real? Why would the Constitution include rights that courts can't enforce?</div>
+        </div>
+        <div class="dialogue-line">
+          <div class="dialogue-avatar avatar-a">📘</div>
+          <div class="dialogue-text"><strong>Explainer:</strong> Non-justiciable doesn't mean unimportant. DPSPs are a directive to the state — a governance roadmap. Courts can't force implementation, but use them to interpret laws and fill gaps. The Minerva Mills case (1980) held that the balance between DPSPs and Fundamental Rights is itself part of the Constitution's basic structure.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-teal" style="margin-top:18px;">
+      <div class="callout-label">When to Use</div>
+      Use when a concept is frequently misunderstood, when an aspirant is likely to ask "but why?" — or when a concept appears simple but carries an important UPSC-level nuance.
+    </div>
+  </div>
+
+  <!-- PAGE STRUCTURE -->
+  <div class="section" id="structure">
+    <div class="section-number">Principle 06</div>
+    <h2>Structure every page <em>like a good teacher's class</em></h2>
+    <div class="divider"></div>
+    <p class="section-intro">Aspirants should scan the structure in 10 seconds and know exactly what they're about to learn — and what they'll be able to do with it.</p>
+
+    <div class="page-structure">
+      <div class="ps-row"><div class="ps-num">1</div><div class="ps-content"><div class="ps-label">Hook</div><div class="ps-desc">What is this topic and why does it matter for UPSC? (1–2 sentences)</div></div></div>
+      <div class="ps-row"><div class="ps-num">2</div><div class="ps-content"><div class="ps-label">Core Concept</div><div class="ps-desc">The central idea, explained clearly. No jargon before context.</div></div></div>
+      <div class="ps-row"><div class="ps-num">3</div><div class="ps-content"><div class="ps-label">Visual</div><div class="ps-desc">Diagram, table, or map reinforcing the concept. Always with a caption.</div></div></div>
+      <div class="ps-row"><div class="ps-num">4</div><div class="ps-content"><div class="ps-label">Detail</div><div class="ps-desc">Supporting information in short paragraphs. 3 lines max on mobile.</div></div></div>
+      <div class="ps-row"><div class="ps-num">5</div><div class="ps-content"><div class="ps-label">Dialogue or Callout</div><div class="ps-desc">Address the common confusion or exam trap.</div></div></div>
+      <div class="ps-row"><div class="ps-num">6</div><div class="ps-content"><div class="ps-label">Summary</div><div class="ps-desc">3–5 bullets. What to remember. What the question looks like in Prelims or Mains.</div></div></div>
+    </div>
+  </div>
+
+  <!-- PRINCIPLES GRID -->
+  <div class="section">
+    <div class="section-number">Summary</div>
+    <h2>Eight principles. <em>One standard.</em></h2>
+    <div class="divider"></div>
+    <div class="principles-grid">
+      <div class="principle-card pc-red"><div class="principle-icon">✦</div><h4>Clarity First</h4><p>One idea per paragraph. Front-loaded sentences. No jargon without context.</p></div>
+      <div class="principle-card pc-teal"><div class="principle-icon">◈</div><h4>Information Hierarchy</h4><p>Three layers — core, supporting, supplementary. Formatting reflects the difference.</p></div>
+      <div class="principle-card pc-gold"><div class="principle-icon">◻</div><h4>Visual Thinking</h4><p>Every process, system, and comparison gets a diagram or table. Captions are mandatory.</p></div>
+      <div class="principle-card pc-blue"><div class="principle-icon">◐</div><h4>Intentional Formatting</h4><p>Bold once per paragraph. Italic for first-use terms. Callouts for exam traps only.</p></div>
+      <div class="principle-card pc-red"><div class="principle-icon">💬</div><h4>Dialogue Box</h4><p>Surface the question before the aspirant asks it. Resolve it immediately.</p></div>
+      <div class="principle-card pc-teal"><div class="principle-icon">⬡</div><h4>Page Structure</h4><p>Hook → Concept → Visual → Detail → Callout → Summary. Every time.</p></div>
+      <div class="principle-card pc-gold"><div class="principle-icon">📱</div><h4>Screen-First</h4><p>3-line paragraphs. Mobile-readable tables. Every image at 375px minimum.</p></div>
+      <div class="principle-card pc-blue"><div class="principle-icon">🎯</div><h4>Depth Without Bloat</h4><p>Every sentence earns its place. Specific examples. Always connect to the exam.</p></div>
+    </div>
+  </div>
+
+  <!-- STANDARD -->
+  <div class="standard-block" id="standard">
+    <h2>The Standard</h2>
+    <p style="font-size:14px;color:rgba(250,248,244,0.5);margin-bottom:20px;">Before you publish any content, ask these three questions. If any answer is no — it's not ready.</p>
+    <div class="standard-item"><div class="standard-q">1</div><div class="standard-text">If an aspirant reads only the bold text and visuals — do they get the core idea?</div></div>
+    <div class="standard-item"><div class="standard-q">2</div><div class="standard-text">Could someone who just started UPSC prep understand this on the first read?</div></div>
+    <div class="standard-item"><div class="standard-q">3</div><div class="standard-text">Does this help an aspirant answer a question — not just know a fact?</div></div>
+  </div>
+
+</div>
+
+<div class="footer"><strong>SuperKalam Learn</strong> — Content Philosophy · Internal Document</div>
+
+</body>
+</html>

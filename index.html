@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Content Philosophy — SuperKalam</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  :root {
+    --primary: #000000;
+    --secondary: #ffffff;
+    --gray-50: #fafafa;
+    --gray-100: #f5f5f5;
+    --gray-200: #e5e5e5;
+    --gray-300: #d4d4d4;
+    --gray-400: #a3a3a3;
+    --gray-600: #525252;
+    --gray-700: #404040;
+    --gray-800: #262626;
+    --gray-900: #171717;
+    --accent: #2563eb;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+    background: var(--secondary);
+    color: var(--primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* HEADER */
+  .header {
+    padding: 32px 0;
+    border-bottom: 1px solid var(--gray-200);
+    background: var(--secondary);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.9);
+  }
+
+  .logo {
+    height: 36px;
+    width: auto;
+  }
+
+  /* HERO SECTION */
+  .hero {
+    padding: 120px 0 100px;
+    background: linear-gradient(180deg, var(--gray-50) 0%, var(--secondary) 100%);
+    position: relative;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+      radial-gradient(circle at 20% 50%, rgba(0, 0, 0, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(0, 0, 0, 0.02) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .hero .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero h1 {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+    font-size: clamp(44px, 7vw, 72px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 40px;
+    color: var(--primary);
+  }
+
+  .hero-text {
+    font-size: clamp(19px, 2.5vw, 26px);
+    line-height: 1.65;
+    color: var(--gray-700);
+    max-width: 850px;
+    margin-bottom: 28px;
+    font-weight: 400;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(19px, 2.5vw, 26px);
+    line-height: 1.65;
+    color: var(--primary);
+    font-weight: 600;
+    max-width: 850px;
+    padding: 28px 0;
+    border-top: 2px solid var(--primary);
+    margin-top: 20px;
+  }
+
+  /* CORE PRINCIPLES SECTION */
+  .principles-section {
+    padding: 120px 0;
+    background: var(--secondary);
+  }
+
+  .section-title {
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+    font-size: clamp(28px, 4vw, 36px);
+    font-weight: 600;
+    margin-bottom: 80px;
+    color: var(--primary);
+    letter-spacing: -0.01em;
+  }
+
+  .principles-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 48px 40px;
+    margin-bottom: 60px;
+  }
+
+  @media (max-width: 1100px) {
+    .principles-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 48px 32px;
+    }
+  }
+
+  .principle-card {
+    text-align: left;
+    padding: 0;
+    transition: transform 0.3s ease;
+  }
+
+  .principle-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .principle-icon {
+    width: 72px;
+    height: 72px;
+    margin: 0 0 28px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    background: var(--gray-100);
+    border-radius: 16px;
+    border: 1px solid var(--gray-200);
+  }
+
+  .principle-card h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--primary);
+    letter-spacing: -0.01em;
+  }
+
+  .principle-card p {
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--gray-700);
+    font-weight: 400;
+  }
+
+  /* MANIFESTO SECTION */
+  .manifesto-section {
+    padding: 120px 0;
+    background: var(--gray-50);
+  }
+
+  .manifesto-title {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+    font-size: clamp(36px, 5vw, 48px);
+    font-weight: 700;
+    margin-bottom: 60px;
+    color: var(--primary);
+    letter-spacing: -0.02em;
+  }
+
+  .manifesto-intro {
+    font-size: 18px;
+    line-height: 1.8;
+    color: var(--gray-700);
+    margin-bottom: 48px;
+    max-width: 900px;
+  }
+
+  .manifesto-quote {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+    font-size: clamp(22px, 3vw, 28px);
+    line-height: 1.5;
+    font-weight: 600;
+    color: var(--primary);
+    border-left: 6px solid var(--primary);
+    padding-left: 36px;
+    margin: 64px 0;
+    max-width: 900px;
+    letter-spacing: -0.01em;
+  }
+
+  .principle-block {
+    margin-bottom: 96px;
+    max-width: 900px;
+  }
+
+  .principle-block:last-child {
+    margin-bottom: 0;
+  }
+
+  .principle-block h2 {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+    font-size: clamp(26px, 3.5vw, 32px);
+    font-weight: 700;
+    margin-bottom: 28px;
+    color: var(--primary);
+    letter-spacing: -0.01em;
+  }
+
+  .principle-block p {
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--gray-700);
+    margin-bottom: 20px;
+  }
+
+  .principle-block ul {
+    list-style: none;
+    margin-top: 32px;
+    padding-left: 0;
+    background: var(--secondary);
+    border-radius: 12px;
+    padding: 32px;
+    border: 1px solid var(--gray-200);
+  }
+
+  .principle-block li {
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--gray-700);
+    margin-bottom: 20px;
+    padding-left: 32px;
+    position: relative;
+  }
+
+  .principle-block li:last-child {
+    margin-bottom: 0;
+  }
+
+  .principle-block li:before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 20px;
+  }
+
+  .principle-block strong {
+    color: var(--primary);
+    font-weight: 700;
+  }
+
+  .highlight-text {
+    font-size: clamp(20px, 2.8vw, 26px);
+    line-height: 1.6;
+    font-weight: 600;
+    color: var(--primary);
+    margin: 40px 0;
+    font-style: italic;
+  }
+
+  /* FINAL SECTION */
+  .final-section {
+    padding: 120px 0;
+    background: var(--primary);
+    color: var(--secondary);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .final-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+      radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 70% 70%, rgba(255, 255, 255, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .final-section .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .final-section h2 {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 700;
+    margin-bottom: 48px;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  .final-section p {
+    font-size: clamp(19px, 2.5vw, 26px);
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 900px;
+    margin-bottom: 28px;
+  }
+
+  .final-section strong {
+    color: var(--secondary);
+    font-weight: 700;
+  }
+
+  .final-quote {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+    font-size: clamp(26px, 3.5vw, 36px);
+    line-height: 1.4;
+    font-weight: 700;
+    color: var(--secondary);
+    margin-top: 64px;
+    max-width: 900px;
+    letter-spacing: -0.01em;
+  }
+
+  .subtext {
+    font-size: clamp(17px, 2.2vw, 22px);
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 32px;
+    font-style: italic;
+  }
+
+  /* FOOTER */
+  .footer {
+    padding: 48px 0;
+    background: var(--gray-900);
+    text-align: center;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 14px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .container {
+      padding: 0 24px;
+    }
+
+    .header {
+      padding: 24px 0;
+    }
+
+    .logo {
+      height: 30px;
+    }
+
+    .hero {
+      padding: 80px 0 60px;
+    }
+
+    .principles-section,
+    .manifesto-section,
+    .final-section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      margin-bottom: 60px;
+    }
+
+    .principles-grid {
+      grid-template-columns: 1fr;
+      gap: 48px 24px;
+    }
+
+    .manifesto-quote {
+      padding-left: 24px;
+      border-left-width: 4px;
+    }
+
+    .principle-block {
+      margin-bottom: 64px;
+    }
+
+    .principle-block ul {
+      padding: 24px;
+    }
+
+    .principle-block li {
+      padding-left: 28px;
+    }
+  }
+
+  /* SMOOTH SCROLL */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* SELECTION */
+  ::selection {
+    background: var(--primary);
+    color: var(--secondary);
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="container">
+    <img src="blue-full.png" alt="SuperKalam" class="logo">
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <h1>Our Content Philosophy</h1>
+    <p class="hero-text">We're opinionated about how content should look, feel, and work because most of what's out there is bloated and designed for the wrong people.</p>
+    <p class="hero-subtitle">Ultimately, great content is honest, structured, and built for how students actually learn.</p>
+  </div>
+</section>
+
+<!-- CORE PRINCIPLES -->
+<section class="principles-section">
+  <div class="container">
+    <h2 class="section-title">Our Core Principles</h2>
+
+    <div class="principles-grid">
+
+      <div class="principle-card">
+        <div class="principle-icon">📄</div>
+        <h3>No Wall of Text</h3>
+        <p>If it looks like a textbook, we throw it out. Wall-of-text learning is dead. It deflates you, slows you down, and makes everything harder than it needs to be. We use numbered bullets, strategic bolding, and callouts to make ideas clear.</p>
+      </div>
+
+      <div class="principle-card">
+        <div class="principle-icon">✍️</div>
+        <h3>Writing Matters</h3>
+        <p>We obsess over the writing because style, rhythm, and word choice are part of the teaching. Great resources don't ramble. They guide, clarify, and get out of your way.</p>
+      </div>
+
+      <div class="principle-card">
+        <div class="principle-icon">📦</div>
+        <h3>Built for Students, Not Approval</h3>
+        <p>We don't write to impress or fit some stuffy "official" tone. We write so you actually get it. Every piece of content is vetted by current students, alumni, and teachers for clarity, accuracy, and relevance.</p>
+      </div>
+
+      <div class="principle-card">
+        <div class="principle-icon">🎯</div>
+        <h3>One Philosophy. Every Format.</h3>
+        <p>This isn't just how we write textbooks. It's how we design everything: questions, flashcards, learn mode, mock exams, and even feedback. Clear. Direct. Relentlessly useful.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<section class="manifesto-section">
+  <div class="container">
+
+    <h1 class="manifesto-title">Content Manifesto</h1>
+
+    <p class="manifesto-intro">We're opinionated about how content should look, feel, and work because most of what's out there is bloated and designed for the wrong people.</p>
+
+    <div class="manifesto-quote">Ultimately, great content is honest, structured, and built for how students actually learn.</div>
+
+    <!-- PRINCIPLE 1 -->
+    <div class="principle-block">
+      <h2>1. No Wall of Text</h2>
+      <p>We write for Tuesday at 11 PM, three chapters behind, with an exam Thursday morning.</p>
+      <p>That's where most students are. Under pressure, with limited time, desperate for clarity.</p>
+      <p>The format acknowledges this reality:</p>
+      <ul>
+        <li><strong>Numbered bullets</strong> let overwhelmed students track their progress through complex topics</li>
+        <li><strong>Strategic bolding</strong> helps tired eyes find essential information quickly</li>
+        <li><strong>Callout boxes</strong> isolate key concepts so they don't drown in text</li>
+      </ul>
+      <p class="highlight-text">This isn't about making content easier—it's about making it work.</p>
+    </div>
+
+    <!-- PRINCIPLE 2 -->
+    <div class="principle-block">
+      <h2>2. Writing Matters</h2>
+      <p>We obsess over the writing because tone, rhythm, and word choice are part of the teaching.</p>
+      <div class="manifesto-quote" style="margin: 48px 0;">Great resources don't ramble. They guide, clarify, and get out of your way.</div>
+    </div>
+
+    <!-- PRINCIPLE 3 -->
+    <div class="principle-block">
+      <h2>3. Built for Students, Not Approval.</h2>
+      <p>We don't write to impress or fit some stuffy "official" tone.</p>
+      <p><strong>We write so you actually get it.</strong></p>
+      <p>Every piece of content is vetted by:</p>
+      <ul>
+        <li><strong>Current students:</strong> for clarity and cognitive load</li>
+        <li><strong>Alumni:</strong> for exam relevance</li>
+        <li><strong>Teachers:</strong> for technical accuracy</li>
+      </ul>
+      <p class="highlight-text">Three lenses. No blind spots.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- FINAL -->
+<section class="final-section">
+  <div class="container">
+    <h2>4. One Philosophy. Every Format.</h2>
+
+    <p>This isn't just how we write textbooks.</p>
+
+    <p>It's how we design <strong>everything</strong>: questions, flashcards, learn mode, mock exams, and even feedback.</p>
+
+    <div class="final-quote">Clear. Direct. Relentlessly useful.</div>
+
+    <p class="subtext">Because if content isn't helping you learn faster, what exactly is it doing?</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    © 2026 SuperKalam. All rights reserved.
+  </div>
+</footer>
+
+</body>
+</html>
